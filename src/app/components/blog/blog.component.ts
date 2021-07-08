@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { Subject, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, take } from 'rxjs/operators';
 import { Blog } from 'src/app/models/blog/blog';
 import { ResponseGet } from 'src/app/models/response-base/response-base';
 import { BlogService } from 'src/app/services/blog/blog.service';
@@ -19,11 +19,13 @@ export class BlogComponent implements OnInit, OnDestroy {
   createBlogSub!: Subscription;
   updateBlogSub!: Subscription;
   deleteBlogSub!: Subscription;
+  searchBlogSub!: Subscription;
 
   constructor(private blogService: BlogService, private eventEmitter: EventEmitterService, private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.getAllBlogs();
+    this.searchBlogsEventSubscribe();
   }
 
   ngOnDestroy(): void {
@@ -36,6 +38,25 @@ export class BlogComponent implements OnInit, OnDestroy {
         this.blogs = data.resultData;
       }
     });
+  }
+
+  searchBlogsEventSubscribe() {
+    this.eventEmitter.searchEvent.pipe(
+      debounceTime(400),
+      distinctUntilChanged(),
+      filter(term => term.length > 0),
+    ).subscribe(searchTerm => {
+      searchTerm = searchTerm.length === 0 ? '' : searchTerm;
+      this.searchBogs(searchTerm);
+    })
+  }
+
+  searchBogs(searchTerm: string) {
+    this.searchBlogSub = this.blogService.searchBlogPost(searchTerm).subscribe(data => {
+      if (data) {
+        this.blogs = data.resultData;
+      }
+    })
   }
 
   openEditBlogDialog(blog: Blog = new Blog()) {

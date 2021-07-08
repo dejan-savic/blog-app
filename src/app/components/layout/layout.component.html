@@ -4,7 +4,7 @@
             <mat-toolbar-row>
                 <span>My Blog</span>
                 <span class="spacer"></span>
-                <input type="text" placeholder="Search">
+                <input style="height: 25px; font-size: 15px;" #searchTerm type="text" (input)="emitSeachTerm(searchTerm.value)"  placeholder="Search">
                 <div *ngIf="!showButton">
                     <a href="#" mat-button>Link 1</a>
                     <a href="#" mat-button>Link 2</a>

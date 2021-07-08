@@ -28,7 +28,7 @@ export class BlogService {
 
   searchBlogPost(term: string): Observable<ResponseGet> {
     const params = new HttpParams().append('term', term);
-    return this.httpHelper.get(this.controller, params);
+    return this.httpHelper.get(this.controller + '/Search', params);
    }
 
   createBlogPost(blog: Blog): Observable<Blog> {
