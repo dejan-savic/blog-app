@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { LoaderService } from 'src/app/loader/loader.service';
@@ -9,7 +9,7 @@ import { EventEmitterService } from 'src/app/services/event-emitter/event-emitte
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit, AfterViewInit {
+export class LayoutComponent implements OnInit {
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
   showButton: boolean;
@@ -40,10 +40,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
 
   emitSeachTerm(searchTerm: string) {
     this.eventEmitterService.searchEvent.emit(searchTerm);
-  }
-
-  ngAfterViewInit(): void {
-
   }
 
 }
