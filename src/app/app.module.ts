@@ -19,6 +19,10 @@ import { HttpHelperService } from './services/http-helper/http-helper.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { InterceptorService } from './loader/interceptor.service';
+import { EditBlogDialogComponent } from './modals/edit-blog/edit-blog-dialog.component';
+import { ConfirmDialogComponent } from './modals/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +31,9 @@ import { InterceptorService } from './loader/interceptor.service';
     CategoriesComponent,
     BlogComponent,
     LayoutComponent,
-    NotificationComponent
+    NotificationComponent,
+    EditBlogDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,13 +45,19 @@ import { InterceptorService } from './loader/interceptor.service';
     MatSidenavModule,
     MatIconModule,
     MatDividerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    FormsModule
   ],
   providers: [
+    HttpHelperService,
     EventEmitterService,
     BlogService,
-    HttpHelperService,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+  ],
+  entryComponents: [
+    EditBlogDialogComponent,
+    ConfirmDialogComponent
   ],
   bootstrap: [AppComponent]
 })

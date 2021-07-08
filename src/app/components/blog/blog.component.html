@@ -6,7 +6,7 @@
                 <app-notification></app-notification>
             </div>
             <div class="d-flex align-self-end">
-                <button mat-raised-button color="primary">Add post</button>
+                <button mat-raised-button color="primary" (click)="openEditBlogDialog()">Add post</button>
             </div>
         </div>
         <div class="blog-content">
@@ -24,8 +24,8 @@
                                 <!-- <h5>Update date: {{blog.updatedAt | date: 'dd.MM.yyyy' }} at {{blog.updatedAt | date: 'HH:MM'}} by Some person</h5> -->
                             </div>
                             <div class="article-actions d-flex flex-row">
-                                <button mat-raised-button color="primary">Edit</button>
-                                <button mat-raised-button color="primary">Delete</button>
+                                <button mat-raised-button (click)="openEditBlogDialog(blog)" color="primary">Edit</button>
+                                <button mat-raised-button (click)="openConfirmDialog(blog.id)" color="primary">Delete</button>
                             </div>
                         </div>
                     </div>

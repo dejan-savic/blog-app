@@ -10,8 +10,8 @@ export class Blog {
         this.id = 0;
         this.createdAt = new Date();
         this.updatedAt = new Date();
-        this.title = '';
-        this.text = '';
+        this.title = null;
+        this.text = null;
         this.categoryId = 0;
     }
 }

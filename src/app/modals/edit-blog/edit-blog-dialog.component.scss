@@ -1,0 +1,52 @@
+form {
+  padding: 15px;
+}
+
+header {
+  background-color: gainsboro;
+  height: 25px;
+  border: 1px solid;
+  h4 {
+    padding-left: 10px
+  }
+}
+
+:host::ng-deep .mat-icon {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border: 1px solid;
+  padding-left: 1px;
+  margin-right: 4px;
+  margin-top: 1px;
+}
+
+
+section {
+  padding: 30px;
+  input {
+    width: 90%;
+    margin-bottom: 5px;
+  }
+  textarea {
+    width: 90%;
+  }
+  label {
+    padding-right: 10px;
+  }
+}
+
+.input-error {
+  color: red;
+  font-weight: 600;
+  font: 14px;
+  padding-left: 10px;
+}
+
+.material-icons {
+  font-size: 16px !important;
+  font-family: 'Material Icons', 'Material Icons';
+  .mat-badge-content {
+    font-family: 'Montserrat';
+  }
+}

@@ -1,0 +1,35 @@
+<header class="d-flex flex-row align-items-baseline justify-content-between">
+  <h4><strong>Add/Edit blog post</strong></h4>
+  <div class="actions">
+    <mat-icon>minimize</mat-icon>
+    <mat-icon>check_box_outline_blank</mat-icon>
+    <mat-icon>close</mat-icon>
+  </div>
+</header>
+<form #editBlogForm="ngForm" (ngSubmit)="confirm(editBlogForm)">
+  <section>
+    <div class="d-flex flex-column">
+      <div class="d-flex flex-row align-items-center flex-grow-1">
+        <label for="blogTitle">Title</label>
+        <input type="text" placeholder="Blog Title" [(ngModel)]="blog.title" id="blogTitle" name="blogTitle"
+          #blogTitle="ngModel" required>
+        <div [hidden]="blogTitle.valid || blogTitle.pristine && editBlogForm.form.valid" class="input-error">
+          *
+        </div>
+      </div>
+      <div class="d-flex flex-row align-items-center flex-grow-1">
+        <label for="blogText">Text</label>
+        <textarea placeholder="Blog Text" [(ngModel)]="blog.text" id="blogText" name="blogText" #blogText="ngModel"
+          required cols="30" rows="10"></textarea>
+        <div [hidden]="blogText.valid || blogText.pristine && editBlogForm.form.valid" class="input-error">
+          *
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <footer class="d-flex flex-row justify-content-evenly flex-grow-1">
+    <button color="primary" type="submit" mat-raised-button>Save</button>
+    <button color="primary" type="button" (click)="cancel()" mat-raised-button>Cancel</button>
+  </footer>
+</form>
