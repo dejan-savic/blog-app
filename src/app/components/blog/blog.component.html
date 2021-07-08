@@ -21,7 +21,6 @@
                             <div class="article-title d-flex flex-column">
                                 <h3><strong>{{blog.title}}</strong></h3>
                                 <h5>Posted date: {{blog.createdAt | date: 'dd.MM.yyyy' }} at {{blog.createdAt | date: 'HH:mm'}} by Some person</h5>
-                                <!-- <h5>Update date: {{blog.updatedAt | date: 'dd.MM.yyyy' }} at {{blog.updatedAt | date: 'HH:MM'}} by Some person</h5> -->
                             </div>
                             <div class="article-actions d-flex flex-row">
                                 <button mat-raised-button (click)="openEditBlogDialog(blog)" color="primary">Edit</button>
