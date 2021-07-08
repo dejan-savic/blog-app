@@ -1,0 +1,45 @@
+<div class="blog d-flex flex-column">
+    <div class="blog-component d-flex flex-column">
+        <div class="blog-header d-flex flex-column">
+            <h2><strong>Weclome to My Blog</strong></h2>
+            <div class="notifications">
+                <app-notification></app-notification>
+            </div>
+            <div class="d-flex align-self-end">
+                <button mat-raised-button color="primary">Add post</button>
+            </div>
+        </div>
+        <div class="blog-content">
+            <div class="categories">
+                <app-categories></app-categories>
+            </div>
+            <div class="blog-list">
+                <article *ngFor="let blog of blogs; let i = index">
+                    <div class="article-header d-flex flex-row">
+                        <img src="http://placehold.jp/80x80.png" alt="">
+                        <div class="d-flex flex-row flex-grow-1 align-items-start justify-content-between">
+                            <div class="article-title d-flex flex-column">
+                                <h3><strong>{{blog.title}}</strong></h3>
+                                <h5>Posted date: {{blog.createdAt | date: 'dd.MM.yyyy' }} at {{blog.createdAt | date: 'HH:mm'}} by Some person</h5>
+                                <!-- <h5>Update date: {{blog.updatedAt | date: 'dd.MM.yyyy' }} at {{blog.updatedAt | date: 'HH:MM'}} by Some person</h5> -->
+                            </div>
+                            <div class="article-actions d-flex flex-row">
+                                <button mat-raised-button color="primary">Edit</button>
+                                <button mat-raised-button color="primary">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-body">
+                        <p>{{blog.text}}</p>
+                    </div>
+                    <div class="article-images d-flex flex-grow-1 flex-row align-items-center justify-content-center">
+                        <img src="http://placehold.jp/100x100.png" alt="">
+                        <img src="http://placehold.jp/100x100.png" alt="">
+                        <img src="http://placehold.jp/100x100.png" alt="">
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,10 @@
+<div *ngIf="showNotification" class="notification d-flex flex-column">
+    <div class="align-self-end">
+        <button (click)="closeNotification()" mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="justify-self-center">
+        <span>{{message}}</span>
+    </div>
+</div>

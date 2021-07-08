@@ -1,0 +1,47 @@
+<div class="main">
+    <div class="nav-div">
+        <mat-toolbar color="primary">
+            <mat-toolbar-row>
+                <span>My Blog</span>
+                <span class="spacer"></span>
+                <input type="text" placeholder="Search">
+                <div *ngIf="!showButton">
+                    <a href="#" mat-button>Link 1</a>
+                    <a href="#" mat-button>Link 2</a>
+                    <a href="#" mat-button>Link 3</a>
+                    <a href="#" mat-button>My Profile</a>
+                    <a href="#" mat-button>Logout</a>
+                </div>
+                <button *ngIf="showButton" mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon *ngIf="!sidenav.opened">
+                        menu
+                    </mat-icon>
+                    <mat-icon *ngIf="sidenav.opened">
+                        close
+                    </mat-icon>
+                </button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+    </div>
+    <div class="main-content">
+        <div style="flex: 1; opacity: 1;">
+            <mat-sidenav-container class="mat-container">
+                <mat-sidenav class="sidenav" color="primary" #sidenav="matSidenav" mode="over" position="end">
+                    <div class="d-flex flex-column">
+                        <a href="#" mat-button>Link 1</a>
+                        <a href="#" mat-button>Link 2</a>
+                        <a href="#" mat-button>Link 3</a>
+                        <a href="#" mat-button>My Profile</a>
+                        <a href="#" mat-button>Logout</a>
+                    </div>
+                </mat-sidenav>
+                <mat-sidenav-content class="sidenav-content">
+                    <router-outlet></router-outlet>
+                </mat-sidenav-content>
+            </mat-sidenav-container>
+        </div>
+    </div>
+</div>
+<div *ngIf="loaderService.isLoading | async" class="loader">
+    <mat-spinner color="primary" style="top: 50%; left: 50%; opacity: 1.0 !important; z-index: 100;"></mat-spinner>
+</div>
