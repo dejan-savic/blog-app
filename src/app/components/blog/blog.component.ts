@@ -30,6 +30,7 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.getBlogSubscription.unsubscribe();
+    this.searchBlogSub.unsubscribe();
   }
 
   getAllBlogs() {
@@ -48,7 +49,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     ).subscribe(searchTerm => {
       searchTerm = searchTerm.length === 0 ? '' : searchTerm;
       this.searchBogs(searchTerm);
-    })
+    });
   }
 
   searchBogs(searchTerm: string) {
